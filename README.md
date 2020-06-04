@@ -11,9 +11,9 @@ The **Business Improvement Area (BIA)** is an association of commercial property
 ## 2. Data Description 
 
 ### 2.1 Description of Data and Data Source
-The BIA layer represents the active BIAs in the City of Toronto that has been enacted by Council. Each BIA has been defined by a by-law and is represented by a Board of Management. The layer is updated as BIAs are created, amended or deleted by Council. This file is a polygon file that shows the BIAs Areas. The BIAs Data can be found at ...
+The BIA layer represents the active BIAs in the City of Toronto that has been enacted by Council. Each BIA has been defined by a by-law and is represented by a Board of Management. The layer is updated as BIAs are created, amended or deleted by Council. This file is a polygon file that shows the BIAs Areas. The BIAs Data can be found at https://open.toronto.ca/dataset/business-improvement-areas/.
 
-Also I used Data about Boroughs and Neighborhoods in Toroto. They can be found as GeoJSON data at...
+Also I used Data about Boroughs and Neighborhoods in Toroto. They can be found as GeoJSON data at https://open.toronto.ca/dataset/neighbourhoods/.
 
 The second part of the data for the analysis comes via the Foursquare API. This dataset contains venues located in Toronto, there location, name, venue category and user rating. The information collected will be for all the central neighborhoods in Toronto.
 
@@ -22,28 +22,20 @@ In a first step the location of the venues will be ploted on a map as overlay to
 
 In a second step the venues will be clustered depending on there location and the clusters plotted to show whether the clusters are located whitin the BIAs. This will help answer the second part of the question, whether there are clusters of venues in Toronto that are not part of any BIAs. This clusters could selected for the creation and localisation of future BIAs.
 
-## 3. Problem solving
+## 3. Data Preparation
 
-### 3.1 Getting the BIAs Data
-
-Via the API provided by the City of Toronto 
-
-### Loading Data about Neighborhoods
-
-A GeoJSON file is loaded and the geometry and names of the Neighborhoods are used to plot them onto a map of Toronto.
-
-### Plotting the BIA-Areas and Neighborhoods on a Map
+### 3.1 Plotting the BIA-Areas and Neighborhoods on a Map
 
 The Folium library is use to plot the Neighborhoods and the BIA-Areas on the map of Toronto. The Map shows the shape of BIAs in green and the shape of Neighborhoods in blue.
 
-### Getting Data for the Venues around the BIAs
+### 3.2 Getting Data for Venues in each Neighborhood
 Via a API request the data for the venues in all Neighborhoods are collected and stored in a Data Frame for easy data manipulation. The definied function will get, depending on the location (center of Neighborhood), the names of the venues within a radius of 800 m, the exact location of the venues (latitude, longitude) and the venue category. 
 
-### Preparing the Venue Data for Analysis
+### 3.3 Preparing the Venue Data for Analysis
 
 Cleaning the Data, droping missing values, converting Latitude and Longitude to float.
 
-## Analysing the Data
+## 4. Analysing the Data
 The collected Data is analised in the following ways:
 1. Mapping the Venues with a Heatmap to visualise the Venue Density
 2. Clustering the Venues with HDBSCAN
