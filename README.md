@@ -76,3 +76,9 @@ For further analysis, the correlation between the time of BIA creation and the c
 
 ## 6. Conclusion
 This report shows the effectiveness of BIAs and proves that they can play a key role in the development of business in a city. Also, the report shows possible locations for future BIAs. It could, therefore, be used to persuade city planners to create them and could also convince business owners or creators to locate their business in proximity to BIAs. 
+
+## 7. References
+- [1] Toronto Open Data (Business Improvement Areas)
+- [2] Toronto Open Data (Neighborhoods)
+- [3] Description of HDBSCAN
+- [4] Wikipedia Haversine Distance
