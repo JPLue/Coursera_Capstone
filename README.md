@@ -50,10 +50,12 @@ In this case HDBSCAN is used to find clusters of Venues based on there Location.
 
 To visualise the clustered Venues their center is calculated as the mean Latitude and Longitude for each cluster and then plotted onto the map of Toronto. As the map shows most clusters are located within the boundaries of the BIAs. The mapping also shows that some Venue clusters have not BIA nearby. This would be candidates for future development of BIAs. 
 
-![Cluster_BIA_MAP](Data/RelationClusterBIA.png)
+![ClusterBIARelations](Data/RelationClusterBIA.png)
 
 ### 4. Identifing Clusters without BIA
 
 To identify Clusters that are not near an existing BIA and could therefore be places for future BIAs the distance between each cluster and its nearest BIA is the key. For that the Haversine distance between each Cluster and each BIA is calculated and the BIA with the shortest distance for each Cluster is selected. The resulting data frame shows the distance for each pair of Cluster and BIA. If that distance is greater than the selected distance of 800 m the cluster is identified as not directly belonging to the BIA. 
+
+![MapClusterBIA](Data/Clusters_with_and_without_BIAs.png)
 
 As we can see **35 Clusters without an BIA nearby** exist. This would be prime locations for future development through BIAs. Of all Clusters of Venues in Central Toronto 70 are located directly on or very close to the center of BIAs. This shows how effective BIAs are in promoting Business nearby.
