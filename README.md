@@ -2,7 +2,9 @@
 
 ## 1. Problem Description and Background Discussion
 ### 1.1 Problem Description
-As part of the Capstone Project for the Applied Data Science Coursera Course, I have chosen to analyze the Business Improvement Area (BIA) Program of Toronto, ON in Canada. The question I will answer is: **„Are most Venues in Central Toronto located near or in Business Improvement Areas? A second question, but closely related to the first is: Are there clusters of Venues not located in BIAs that would be favourable locations for future BIAs?“** 
+As part of the Capstone Project for the Applied Data Science Coursera Course, I have chosen to analyze the Business Improvement Area (BIA) Program of Toronto, ON in Canada. The question I will answer are: 
+- **„Are most Venues in Central Toronto located near or in Business Improvement Areas?** 
+- **A second question, but closely related to the first is: Are there clusters of Venues not located in BIAs that would be favourable locations for future BIAs?“** 
 
 Both questions are of interest to city planners, politicians and venue owners or business people planing the location of future venues. City planners and politicians will be interested in areas that could be favourable locations for future BIAs. And businesspeople in the correlation between BIAs and the location of venues, since it enables better planning of future venue locations.
 
@@ -38,7 +40,7 @@ Using a Heatmap it is possible to show the Density of Venues for the Neighborhoo
 ![DensityMapVenues](Data/Density_map_venues.png)
 
 ### 3.2 Clustering the Locations with HDBSCAN
-**HDBSCAN** is an algorithm to find areas or clusters with a high density of data points. The algorithm makes few assumptions about the shape of the cluster, instead, it looks for areas with a higher density of data points than the surrounding areas. It is a non-parametric method that looks for a cluster hierarchy shaped by the multivariate modes of the underlying distribution [https://towardsdatascience.com/understanding-hdbscan-and-density-based-clustering-121dbee1320e]. It excels therefor with data that has the following characteristics:
+**HDBSCAN** is an algorithm to find areas or clusters with a high density of data points. The algorithm makes few assumptions about the shape of the cluster, instead, it looks for areas with a higher density of data points than the surrounding areas. It is a non-parametric method that looks for a cluster hierarchy shaped by the multivariate modes of the underlying distribution [HDBSCAN Description](https://towardsdatascience.com/understanding-hdbscan-and-density-based-clustering-121dbee1320e). It excels therefor with data that has the following characteristics:
 - Arbitrarily shaped clusters
 - Clusters with different sizes and densities
 - Noise
