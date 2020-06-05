@@ -35,7 +35,7 @@ The collected Data is analysed in the following ways:
 ### 3.1 Mapping the Venue Density
 Using a Heatmap it is possible to show the Density of Venues for the Neighborhoods. As we can see most Venues are located in or very near BIAs. This is a first and only visual indication for the effectivnes of BIAs to promote the creation of Venues.
 
-https://github.com/JPLue/Coursera_Capstone/blob/master/Data/Density%20map%20venues.png?raw=true
+![Density Map Venue Locations](Data/Density map venues.png)
 
 ### 3.2 Clustering the Locations with HDBSCAN
 **HDBSCAN** is an algorithmen to find areas or clusters with a high desity of data points. The algorithm makes few assumptions about the shape of the cluster, instead it looks for areas with a higher density of data points than the surrounding areas. It is non-parametric method that looks for a cluster hierarchy shaped by the multivariate modes of the underlying distribution [https://towardsdatascience.com/understanding-hdbscan-and-density-based-clustering-121dbee1320e]. It excells therefor with data that has the following characteristics:
