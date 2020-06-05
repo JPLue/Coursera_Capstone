@@ -1,53 +1,42 @@
 # Coursera_Capstone
 
 ## 1. Problem Description and Background Discussion
-
 ### 1.1 Problem Description
-As part of the Capstone Project for the Applied Data Science Coursera Course I have chosen to analyze the effectiveness of the Business Improvement Area (BIA) Program of Toronto, ON in Canada. The question I will answer is: **„Are most Venues located near or in Business Improvement Areas or are there clusters of Venues that should be made into BIAs?“** 
+As part of the Capstone Project for the Applied Data Science Coursera Course I have chosen to analyze the Business Improvement Area (BIA) Program of Toronto, ON in Canada. The question I will answer is: **„Are most Venues in Central Toronto located near or in Business Improvement Areas? A second question, but closely related to the first is: Are there clusters of Venues not located in BIAs that would therefore be favorable locations for future BIAs?“** 
+
+Both questions are of interest to city planers, politicians and venue owners or business people planing the location of future venues. City planers and politicians will be interested in areas that could be favorable locations for future BIAs. And business people in the correlation between BIAs and the location of venues, since it enables a better planing of future venue locations.
 
 ### 1.2 Background Discussion
-The **Business Improvement Area (BIA)** is an association of commercial property owners and tenants within a defined area who work in partnership with the City to create thriving, competitive, and safe business areas that attract shoppers, diners, tourists, and new businesses. The question is how effective this association and the created Areas are for attracting shoppers, diners, tourists and new business. 
+The **Business Improvement Area (BIA)** is an association of commercial property owners and tenants within a defined area who work in partnership with the City to create thriving, competitive, and safe business areas that attract shoppers, diners, tourists, and new businesses. Each BIA has been defined by a by-law and is represented by a Board of Management. The question is how effective this association and the created Areas are for attracting business in form of Venues. 
 
 ## 2. Data Description 
-
 ### 2.1 Description of Data and Data Source
-The BIA layer represents the active BIAs in the City of Toronto that has been enacted by Council. Each BIA has been defined by a by-law and is represented by a Board of Management. The layer is updated as BIAs are created, amended or deleted by Council. This file is a polygon file that shows the BIAs Areas. The BIAs Data can be found at https://open.toronto.ca/dataset/business-improvement-areas/.
-
-Also I used Data about Boroughs and Neighborhoods in Toroto. They can be found as GeoJSON data at https://open.toronto.ca/dataset/neighbourhoods/.
-
-The second part of the data for the analysis comes via the Foursquare API. This dataset contains venues located in Toronto, there location, name, venue category and user rating. The information collected will be for all the central neighborhoods in Toronto.
+To answer the question data from the following three sources is used:
+    - BIA Data: The BIA data represents the active BIAs in the City of Toronto that have so far been enacted by Council. The BIA layer is updated as BIAs are created, amended or deleted by Council. The BIA data frame includes information about 83 BIAs and data about their id, name, location, area and polygon shape. From this BIA data frame only the 74 BIAs located in the central area of Toronto are used. The BIAs Data can be found as GeoJSON file at [Toronto BIA Data](https://open.toronto.ca/dataset/business-improvement-areas/) and can be accessed via an API or downloaded as file.
+    - Neighborhood Data: Data about the Boroughs and Neighborhoods in Toroto. The Neighborhood data frame includes information about 140 Neighborhoods in Toronto and there id, name, location, area and polygon shape. From this 140 Neighborhoods only the 89 neighborhoods located in the central area of Toronto are used. This data can be found as GeoJSON data at [Toronto Neighborhood Data](https://open.toronto.ca/dataset/neighbourhoods/).
+    - Venue Data: Data about the Venues located within Toronto is collected via the Foursquare API. This dataset contains venues located in Toronto, there id, location, name and venue category. Venue data will be collected for each of the 79 Neighborhoods. The collected venue data includes information about 2694 venues. 
 
 ### 2.2 How will the Data be used to solve the Problem
-In a first step the location of the venues will be ploted on a map as overlay to the BIAs. This will show if most Venues are located within or very near BIAs and therefor give an answer about the effectivenes in promoting business near or in BIAs. 
+In a first step the BIA and Neighborhood data will be reduced to include only BIAs and Neighborhoods located in the central area of Toronto. The resulting data will be plotted on a map of Toronto to show the areas of interest for this analysis, the location of the BIAs and the area, the Neighborhoods, for which data about Venues is collected. 
 
-In a second step the venues will be clustered depending on there location and the clusters plotted to show whether the clusters are located whitin the BIAs. This will help answer the second part of the question, whether there are clusters of venues in Toronto that are not part of any BIAs. This clusters could selected for the creation and localisation of future BIAs.
+In a second step the density of venues will be plotted as a heatmap onto the map of Toronto. This will show the location of areas with a high density of venues and therefore give a first overview wether venues are mostly located near or in BIAs.
 
-## 3. Data Preparation
+In a third step the venues will be clustered depending on there location and there proximity to each other. This will be done using the HDBSCAN machine learning algorithm. The location of each cluster will be plotted onto the map to show his location in relation to the BIAs. This will answer the first question wether most Venues are located in or very near BIAs.
 
-### 3.1 Plotting the BIA-Areas and Neighborhoods on a Map
+In a fourth step the distance between the center of each cluster and the center of each BIA will be calculated. This will allow the matching of each cluster to his nearest BIA. Based on this distance clusters that are to far away from BIAs to be related to the BIA are designated as venue clusters that could locations for possible future BIAs. This will answer the question wether there are venue clusters that would could be favorable locations for future BIAs.
 
-The Folium library is use to plot the Neighborhoods and the BIA-Areas on the map of Toronto. The Map shows the shape of BIAs in green and the shape of Neighborhoods in blue.
+## 3. Methology used to analyse the data
+The collected Data is analysed in the following ways:
+    1. Mapping the Venues with a Heatmap to visualise the Venue Density
+    2. Clustering the Venues with HDBSCAN
+    3. Mapping the Clusters to visualise Venue Clusters
+    4. Identify Clusters without BIAs
 
-### 3.2 Getting Data for Venues in each Neighborhood
-Via a API request the data for the venues in all Neighborhoods are collected and stored in a Data Frame for easy data manipulation. The definied function will get, depending on the location (center of Neighborhood), the names of the venues within a radius of 800 m, the exact location of the venues (latitude, longitude) and the venue category. 
-
-### 3.3 Preparing the Venue Data for Analysis
-
-Cleaning the Data, droping missing values, converting Latitude and Longitude to float.
-
-## 4. Analysing the Data
-The collected Data is analised in the following ways:
-1. Mapping the Venues with a Heatmap to visualise the Venue Density
-2. Clustering the Venues with HDBSCAN
-3. Mapping the Clusters to visualise Venue Clusters
-4. Identify Clusters without BIAs
-
-### 1. Mapping the Venue Density
-
+### 3.1 Mapping the Venue Density
 Using a Heatmap it is possible to show the Density of Venues for the Neighborhoods. As we can see most Venues are located in or very near BIAs. This is a first and only visual indication for the effectivnes of BIAs to promote the creation of Venues.
+![Data](Bildschirmfoto 2020-06-05 um 11.33.11)
 
-### 2. Clustering the Locations with HDBSCAN
-
+### 3.2 Clustering the Locations with HDBSCAN
 **HDBSCAN** is an algorithmen to find areas or clusters with a high desity of data points. The algorithm makes few assumptions about the shape of the cluster, instead it looks for areas with a higher density of data points than the surrounding areas. It is non-parametric method that looks for a cluster hierarchy shaped by the multivariate modes of the underlying distribution [https://towardsdatascience.com/understanding-hdbscan-and-density-based-clustering-121dbee1320e]. It excells therefor with data that has the following characteristics:
 - Arbitrarily shaped clusters
 - Clusters with different sizes and densities
