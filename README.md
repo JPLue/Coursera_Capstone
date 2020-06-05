@@ -35,11 +35,7 @@ The collected Data is analysed in the following ways:
 ### 3.1 Mapping the Venue Density
 Using a Heatmap it is possible to show the Density of Venues for the Neighborhoods. As we can see most Venues are located in or very near BIAs. This is a first and only visual indication for the effectivnes of BIAs to promote the creation of Venues.
 
-<<<<<<< HEAD
 ![DensityMapVenues](Data/Density_map_venues.png)
-=======
-![Density Map Venue Locations](Data/Density map venues.png)
->>>>>>> 2b80c4c29c316223dba4c453749b44cec2dd72b5
 
 ### 3.2 Clustering the Locations with HDBSCAN
 **HDBSCAN** is an algorithmen to find areas or clusters with a high desity of data points. The algorithm makes few assumptions about the shape of the cluster, instead it looks for areas with a higher density of data points than the surrounding areas. It is non-parametric method that looks for a cluster hierarchy shaped by the multivariate modes of the underlying distribution [https://towardsdatascience.com/understanding-hdbscan-and-density-based-clustering-121dbee1320e]. It excells therefor with data that has the following characteristics:
@@ -48,9 +44,13 @@ Using a Heatmap it is possible to show the Density of Venues for the Neighborhoo
 - Noise
 In this case HDBSCAN is used to find clusters of Venues based on there Location. The parameters for tuning the algorithmen allow to set the method for calculating the distance between the location points to **Haversine Distance**. Haversine Distance is a method for calculating distance between Geographical Points (Latitude, Longitude). The second parameter set is the **min_cluster_size** and the third **epsilon** a measure for the max distance between the points. Min_cluster_size is set to min 5 Venues per cluster and epsilon to max 200 meters. 
 
+![DataFrameClusters](Data/Venue_Clusters.png)
+
 ### 3. Visualising and Mapping the Clusters
 
 To visualise the clustered Venues their center is calculated as the mean Latitude and Longitude for each cluster and then plotted onto the map of Toronto. As the map shows most clusters are located within the boundaries of the BIAs. The mapping also shows that some Venue clusters have not BIA nearby. This would be candidates for future development of BIAs. 
+
+![Cluster_BIA_MAP](Data/RelationClusterBIA.png)
 
 ### 4. Identifing Clusters without BIA
 
