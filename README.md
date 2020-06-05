@@ -1,5 +1,7 @@
 # Coursera_Capstone
 
+The Report can also be found on [Medium](https://medium.com/@jpluebbert/effectiveness-of-business-improvement-areas-bia-in-toronto-3ce1dc6eb1ac).
+
 ## 1. Problem Description and Background Discussion
 ### 1.1 Problem Description
 As part of the Capstone Project for the Applied Data Science Coursera Course, I have chosen to analyze the Business Improvement Area (BIA) Program of Toronto, ON in Canada. The question I will answer are: 
