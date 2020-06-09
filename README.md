@@ -1,4 +1,4 @@
-# Coursera_Capstone
+# Effectiveness of Business Improvement Areas (BIAs) in Toronto
 
 The Report can also be found on [Medium](https://medium.com/@jpluebbert/effectiveness-of-business-improvement-areas-bia-in-toronto-3ce1dc6eb1ac).
 
@@ -50,12 +50,12 @@ In this case, HDBSCAN is used to find clusters of Venues based on their Location
 
 ![DataFrameClusters](Data/Venues_clustered_based_on_location.png)
 
-### 3. Visualising and Mapping the Clusters
+### 3.3 Visualising and Mapping the Clusters
 To visualise the clustered Venues their centre is calculated as the mean Latitude and Longitude for each cluster and then plotted onto the map of Toronto. As the map shows most clusters are located within the boundaries of the BIAs. The mapping also shows that some Venue clusters have not BIA nearby. This would be candidates for the future development of BIAs. 
 
 ![MapClusters](Data/Venues_BIAs_clustered.png)
 
-### 4. Identifying Clusters without BIA
+### 3.4 Identifying Clusters without BIA
 To identify Clusters that are not near an existing BIA and could, therefore, be place for future BIAs the distance between each cluster and its nearest BIA is the key. For that, the Haversine distance between each Cluster and each BIA is calculated and the BIA with the shortest distance for each Cluster is selected. The resulting data frame shows the distance for each pair of Cluster and BIA.
 
 ![DistanceMatrix](Data/Distance_matrix_Cluster_BIAs.png)
